@@ -39,11 +39,23 @@ namespace RudeBoyScanner.Core
                 {
                     Content = lines[i],
                     LineNumber = (i += 1),
-                    File = FileName
+                    File = FileName,
+                    Word = text
                 });
             }     
 
             return offendingLines;
+        }
+
+        public List<Record> FindTextInSingleFile(SearchWords words)
+        {
+            var recordList = new List<Record>();
+            foreach (var result in words.Word.Select(FindLineNumberAndPosition))
+            {
+                recordList.AddRange(result);
+            }
+
+            return recordList;
         }
     }
 }

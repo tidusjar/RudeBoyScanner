@@ -19,7 +19,7 @@
 
         <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top">
             <MenuItem Name="FileItem" Header="File" >
-                <MenuItem Header="Search Words"></MenuItem>
+                <MenuItem Header="Search Words" Click="OpenSearchWordsSettings"></MenuItem>
                 <MenuItem Header="Exit" Click="Exit" />
             </MenuItem>
         </Menu>

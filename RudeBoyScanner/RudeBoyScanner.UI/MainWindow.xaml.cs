@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RudeBoyScanner.Core;
+using RudeBoyScanner.UI.ViewModels;
 
 namespace RudeBoyScanner.UI
 {
@@ -22,7 +23,10 @@ namespace RudeBoyScanner.UI
     public partial class MainWindow : Window
     {
         public string FilePath { get; set; }
+        public SearchWords SearchWords = new SearchWords();
         public ListViewModel ViewModel { get; set; }
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,14 +51,33 @@ namespace RudeBoyScanner.UI
 
         private void StartSearch(object sender, RoutedEventArgs e)
         {
+            if (Words.AllWords.Count < 1)
+            {
+                MessageBox.Show("Please enter in some words (File > Search Words", "Please enter words",
+                    MessageBoxButton.OK, MessageBoxImage.Stop);
+            }
+
+            foreach (var allWord in Words.AllWords.Where(allWord => !SearchWords.Word.Contains(allWord)))
+            {
+                SearchWords.Word.Add(allWord);
+            }
+
             var slr = new SingleLineReader(FilePath);
-            var results = slr.FindLineNumberAndPosition("Text to search for"); //TODO
-            ViewModel.Records = results;
+            var results = slr.FindTextInSingleFile(SearchWords);
+
+            foreach (var result in results)
+                ViewModel.Records.Add(result);
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void OpenSearchWordsSettings(object sender, RoutedEventArgs e)
+        {
+            var window = new WordList();
+            window.Show();
         }
     }
 }

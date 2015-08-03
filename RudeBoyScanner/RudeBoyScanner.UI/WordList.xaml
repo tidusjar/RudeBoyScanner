@@ -1,0 +1,18 @@
+﻿<Window x:Class="RudeBoyScanner.UI.WordList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:RudeBoyScanner.UI"
+        Title="WordList" Height="269.725" Width="429.358">
+    <Window.Resources>
+        <ui:ConfigToDynamicGridViewConverter x:Key="ConfigToDynamicGridViewConverter" />
+    </Window.Resources>
+    <Grid>
+            <ListView ItemsSource="{Binding WordList}"
+                  View="{Binding}"
+                  Margin="10,110,10,10"
+                  Name="Words" 
+                  />
+        <TextBox Name="WordBox" HorizontalAlignment="Left" Height="23" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="135,60,0,0" VerticalAlignment="Top" Width="75" Click="AddWord"/>
+    </Grid>
+</Window>

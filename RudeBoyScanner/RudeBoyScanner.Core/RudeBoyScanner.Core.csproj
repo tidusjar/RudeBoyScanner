@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Record.cs" />
+    <Compile Include="SearchWords.cs" />
     <Compile Include="SingleLineReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

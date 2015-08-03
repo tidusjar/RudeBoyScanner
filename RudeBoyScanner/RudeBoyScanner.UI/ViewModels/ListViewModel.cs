@@ -1,30 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using RudeBoyScanner.Core;
 
-namespace RudeBoyScanner.UI
+namespace RudeBoyScanner.UI.ViewModels
 {
     public class ListViewModel : INotifyPropertyChanged
     {
         public ColumnConfig ColumnConfig { get; set; }
-        private IEnumerable<Record> _record;
-        public IEnumerable<Record> Records
+        private readonly ObservableCollection<Record> _record;
+        public ObservableCollection<Record> Records
         {
             get { return _record; }
-            set
-            {
-                // The `Records` has updated, trigger the PropertyChanged event
-                if (!(Equals(value, _record)))
-                {
-                    _record = value;
+        }
 
-                    var handler = PropertyChanged;
-                    if (handler != null)
-                    {
-                        handler(this, new PropertyChangedEventArgs("Records"));
-                    }
-                }
+        protected void Notify(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
 
@@ -38,16 +34,23 @@ namespace RudeBoyScanner.UI
 
         public ListViewModel()
         {
-            Records = new List<Record>();
+            _record = new ObservableCollection<Record>();
+            _record.CollectionChanged += _record_CollectionChanged;
             ColumnConfig = new ColumnConfig
             {
                 Columns = new List<Column> 
                 { 
                     new Column { Header = "Line No.", Id = 1, DataField = "LineNumber" },
                     new Column { Header = "File", DataField = "File" },
+                    new Column { Header = "Word", DataField = "Word" },
                     new Column { Header = "Content", DataField = "Content" } 
                 }
             };
+        }
+
+        private void _record_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Notify("Record");
         }
     }
 
