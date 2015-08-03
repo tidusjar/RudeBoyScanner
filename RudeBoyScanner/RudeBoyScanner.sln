@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RudeBoyScanner.Core", "Rude
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RudeBoyScanner.ConsoleApp", "RudeBoyScanner.ConsoleApp\RudeBoyScanner.ConsoleApp.csproj", "{60CD63C8-4F8F-4430-9B96-9C6C92EE8F9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RudeBoyScanner.UI", "RudeBoyScanner.UI\RudeBoyScanner.UI.csproj", "{E5D0A7AF-0060-43C9-BCC5-93A4A763CF60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{60CD63C8-4F8F-4430-9B96-9C6C92EE8F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60CD63C8-4F8F-4430-9B96-9C6C92EE8F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60CD63C8-4F8F-4430-9B96-9C6C92EE8F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D0A7AF-0060-43C9-BCC5-93A4A763CF60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D0A7AF-0060-43C9-BCC5-93A4A763CF60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D0A7AF-0060-43C9-BCC5-93A4A763CF60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D0A7AF-0060-43C9-BCC5-93A4A763CF60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
