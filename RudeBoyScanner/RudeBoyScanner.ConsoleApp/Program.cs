@@ -11,7 +11,7 @@ namespace RudeBoyScanner.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var reader = new SingleLineReader(@"C:\Users\Jamie.Rees\Documents\Hosted\Signatures\Anthology_Template.xaml");
+            var reader = new SingleLineReader(@"File location");
             var lineNumbers = reader.FindLineNumberAndPosition("exclaimer");
             foreach (var number in lineNumbers)
             {
